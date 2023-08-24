@@ -1,0 +1,77 @@
+-Raspberry pi OS - https://downloads.raspberrypi.org/raspbian/images/
+                - raspbian-2018-11-15/        2018-11-15  21:06
+                - 2018-11-13-raspbian-stretch.zip    1.0G
+
+
+-Raspberry pi OS with opencv
+
+https://drive.google.com/file/d/1OZ6Kqt6qt6quTEVbAm4nkHtJddg_6eMGbRb
+logib id -pi
+pass - home
+
+to find operating system - lsb_release -a
+
+
+-Download Etcher - balena.io/etcher/
+
+-wpa_supplicant.conf - 
+country=in
+update_config=1
+ctrl_interface=/var/run/wpa_supplicant
+
+network={
+ scan_ssid=1
+ ssid="vivoY21"
+ psk="tushar111"
+}
+
+--Enable and desable ipV6
+Firstly, check for presence of IPv6 using ifconfig. You should be seeing a few lines containing inet6 addr: ....
+
+To disable, edit a file: sudo nano /etc/sysctl.conf
+
+Add the following line:
+
+net.ipv6.conf.all.disable_ipv6 = 1
+For the change to take effect without rebooting: sudo sysctl -p
+
+Verify that IPv6 address does not show up in ifconfig.
+
+If you wish to re-enable, change the value in the setting above from 1 to 0 then execute the following two lines:
+
+sudo sysctl -p
+sudo ifconfig eth0 down && sudo ifconfig eth0 up
+If you are doing this over SSH, the current session will of course be cut off. You should be able to reconnect in just a few seconds.
+
+-raspberryPi default login ID and pass:
+login id - pi
+pass - raspberry
+
+-Use for access the graphical user interface
+sudo apt-get install xrdp
+
+
+
+- To set ip address - nano /etc/dhcpcd.conf
+- to set interfacing and networking - sudo raspi-config
+
+--To check ipv6 enable or disable
+cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+if result=1  ...Disable
+if result=0  ...Enable
+
+
+For help to changing mirrors website : https://pimylifeup.com/raspbian-repository-mirror/
+Web to found mirrors : raspbian.org/Raspbian.Mirrors
+
+mirrors
+deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
+
+
+Mysql installation:https://bytesofgigabytes.com/raspberrypi/how-to-install-mysql-database-on-raspberry-pi/
+sudo apt-get update
+sudo apt-get install mysql-server
+sudo apt install mariadb-server
+to start mysql - sudo mysql -u root -p
+
+Lucid chart - https://lucid.app/lucidchart/ef31d450-6f8a-47bd-beb1-01ca467c1926/edit?beaconFlowId=003C11FA083E693B&invitationId=inv_644e2eb0-5f8c-44c9-abf8-fe67ae7ea80b&page=0_0#

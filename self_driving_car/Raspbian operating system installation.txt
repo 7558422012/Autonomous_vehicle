@@ -1,0 +1,109 @@
+1] older version of raspberrypi.
+    1]older version of raspbian
+       -https.//downloads.raspberrypi.org/raspbian/images/
+       -raspbian-2018-11-15/    2018-11-15  21:06
+       -2018-11-13-raspbian-stretch.zip  1.0G -operating system
+
+2] Download Ethcher
+     - balena.io/etcher/  ...For operating system flash in memory card
+ 
+3]Connect memory card to laptop by using card reader and format
+     - Right click memory card drive and format  ....Note-Dont do quick format
+
+4]Go to etcher and flash the operating system in memory-card
+
+5] After flash operating system in memory-card connect the memory-card to raspberry
+     - stay for 1 minute.
+
+6] Back after some time connect memory card to the laptop.
+
+7] Go to boot drive 
+     -Right click-New-Text Doccument
+     -create file-ssh
+     -create file-wpa_supplicant.conf
+
+8]Select wpa_supplicant.conf
+   -write in wpa_supplicant.conf like this:
+      country=in
+      update_config=1
+      ctrl_interface=var/run/wpa_supplicant
+
+      network={
+       scan_ssid=1
+       ssid="pi"
+       psk="raspberry"
+      }                       ....Note- This all are put in notebook
+
+
+9] Network and internate settings
+   -Network and shearing center
+   -wifi
+   -shearing
+   -Ethernate
+
+10] Network & Internate settings
+   -Network and shearing center
+   -wifi
+   -Networking
+   -Internet Protocol Version 4
+   -Properties
+   -Obtained an IP address automatically
+
+11] Network and internate settings
+   -Nework & Shearing center
+   -Ethernate
+   -Networking
+   -Internet Protocol Version 4
+   -Properties
+   -Use the following IP address
+     -Ex-192.168.137.3           ....first IP check in cmd in rage of cmd IP put your IP address
+   -OK
+12] Add SD card to raspberry 
+
+13] With ethernate and power connection connect raspberry to laptop
+
+14] Putty - Raspberrypi.local - SSH
+
+15] login id - pi
+    pass     - raspberry
+
+16]Putty:
+   -nano/etc/dhcpcd.conf     ....Make following changes with help of arrow buttons
+    
+     #Example static IP configuration:
+     interface eth0
+     static ip_address=192.168.137.10/24
+     #static ip6_address=fd51:42f8:caae:d92e::ff/64
+     static routers=192.168.137.5
+     static domain_name_servers=192.168.137.1  8.8.8.8
+
+   -ctrl+O
+   -Enter
+   -Go back from putty
+
+17]Disconnect and connect raspberry  
+
+18]Scan in Advanced IP scanner 
+
+19]Putty:
+    -sudo raspi-config
+    -Interfacing options
+    -ssh-make enable
+    -VNC-make enable
+    -About raspi-config
+    -Finish
+
+20]Open VNC viewer
+     -VNC Terminal
+     -sudo apt-get install xrdp   ...Used for access the graphical user interface
+
+21] For connect through wifi
+     -cmd
+     -ipconfig
+     -IPv4 Address:-192.168.35.42  ....if so..then
+     -Advanced IP scanner
+     -192.168.35.0-192.168.35.255
+     -scan
+     -We will give the new IP address of raspberry 
+       
+
